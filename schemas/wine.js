@@ -49,11 +49,21 @@ export default {
       type: 'url',
     },
     {
+      name: 'awards',
+      title: 'Awards',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{type: 'awards'}]
+      }]
+    },
+    {
       name: 'reviews',
       title: 'Reviews',
       type: 'array',
       of: [{type: 'reference', to: {type: 'Reviews'}}],
     },
+    production
   ],
   preview: {
     select: {
