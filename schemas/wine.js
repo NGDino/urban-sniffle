@@ -48,15 +48,15 @@ export default {
       title: 'Video Url',
       type: 'url',
     },
-    {
-      name: 'awards',
-      title: 'Awards',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: [{type: 'awards'}]
-      }]
-    },
+    // {
+    //   name: 'awards',
+    //   title: 'Awards',
+    //   type: 'array',
+    //   of: [{
+    //     type: 'reference',
+    //     to: [{type: 'awards'}]
+    //   }]
+    // },
     {
       name: 'reviews',
       title: 'Reviews',
@@ -72,3 +72,5 @@ export default {
     },
   },
 }
+
+
