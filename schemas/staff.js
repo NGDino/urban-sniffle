@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'staff',
+  title: 'Staff',
   type: 'document',
   fields: [
     {
@@ -18,27 +18,27 @@ export default {
       },
     },
     {
-      name: 'favorite-wine',
+      name: 'favoriteWine',
       title: 'Favorite Wine',
-    
+      type: 'string'
     },
     {
-      name: 'staff-image',
+      name: 'staffImage',
       title: 'Staff Image',
       type: 'image',
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'array',
+      type: 'text',
     },
     
   ],
 
   preview: {
     select: {
-      title: 'Name',
-      media: 'staff-image',
+      title: 'name',
+      media: 'staffImage',
     },
     prepare(selection) {
       const {name} = selection

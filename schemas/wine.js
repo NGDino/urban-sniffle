@@ -11,7 +11,7 @@ export default {
     {
       name: 'year',
       title: 'Year',
-      type: 'string',
+      type: 'number',
     },
     {
       name: 'slug',
@@ -61,9 +61,9 @@ export default {
       name: 'reviews',
       title: 'Reviews',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'Reviews'}}],
+      of: [{type: 'reference', to: {type: 'reviews'}}],
     },
-    production
+    // production
   ],
   preview: {
     select: {
