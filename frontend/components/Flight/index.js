@@ -1,7 +1,9 @@
+import {Typography} from '@material-ui/core';
+
 const Flight = () => {
     return (
         <div>
-            <p>suhh dude!</p>
+            <Typography variant='h1'>suhh dude!</Typography>
         </div>
     )
 }
