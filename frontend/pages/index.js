@@ -1,12 +1,10 @@
-import Flight from '../components/Flight';
-import Nav from '../components/Nav';
+import HomeBanner from '../components/HomeBanner'
 
 const Index = () => {
     return (
       <div>
-        <p>Hello world!</p>
-        <Flight></Flight>
-        <Nav></Nav>
+        <HomeBanner/>
+      
       </div>
     )
 }

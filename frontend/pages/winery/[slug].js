@@ -10,6 +10,8 @@ function urlFor (source) {
 
 const Post = (props) => {
     // const router = useRouter()
+    console.log(props)
+    
     const {
         name = 'Missing name', 
         about = 'Missing about',
@@ -49,6 +51,7 @@ const query = groq`*[_type == "winery" && slug.current == $slug][0]{
 }`
 Post.getInitialProps = async function(context) {
     // It's important to default the slug so that it doesn't return "undefined"
+    console.log('func works')
     const { slug = "" } = context.query
     return await client.fetch(query, {slug})
 }
