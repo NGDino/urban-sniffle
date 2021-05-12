@@ -1,14 +1,8 @@
-import groq from 'groq';
-// import client from '../../client';
-
-//api for queries
-
-
 //for easy images
 import imageUrlBuilder from '@sanity/image-url';
 
 //materialUi components
-import {Box, Grid, Typography} from '@material-ui/core';
+import {Box, Grid, Typography, Button, Paper} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import client from '../../client';
 import winery from '../../../sanity/schemas/winery';
@@ -21,28 +15,32 @@ function urlFor (source) {
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        // width: '100%'
     },
     background: {
         height: 300,
         position: 'fixed'
-        
-    
     },
     textBackground: {
         position: 'absolute',
+        width: '70%',
+        top: '22vh',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backGroundColor: '#fff',
+        border: '10px solid rgba(0, 0, 0, 0.4)',
+        padding:'5px 5px 5px 5px',
+        backdropFilter: 'blur(6px)',
+        boxShadow: 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px',
+        borderRadius: '25% 10%;'
+    },
 
-    
-    }
 }));
 
 
 const HomeBanner = (props) => {
     const {name,image} = props.props
-    console.log(image)
-
-
-
-    
+    console.log(props.props)
 
     const classes = useStyles()
     
@@ -50,24 +48,36 @@ const HomeBanner = (props) => {
     return(
         <Box component= 'div'>
             <Box 
-            container 
             className={classes.background}
             component='img'
             src = {urlFor(image)}
             />
-            <Grid 
-            container
-            className= {classes.textBackground}
-            justify= 'center'
-            alighnItems = 'center'
-            >
-                <Grid item component='h2'>
-                    
-                        {name}
+                <Grid 
+                container
+                className= {classes.textBackground}
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={1}
+                >
+                    <Grid item component='h2' xs={12} className = {classes.firstItem}>
+                            Welcome to 
+                    </Grid>                
+                    <Grid item component='h3' xs={12}>
+                            {name}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                        >
+                            Start Flight
+
+                        </Button>
+                    </Grid>
                     
                 </Grid>
                 
-            </Grid>
             
         </Box>
 
