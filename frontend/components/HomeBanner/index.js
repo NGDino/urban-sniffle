@@ -19,7 +19,12 @@ const useStyles = makeStyles((theme) => ({
     },
     background: {
         height: 300,
-        position: 'fixed'
+        // width: '100vw',
+        position: 'fixed',
+        borderBottomRightRadius: '70%',
+        borderBottom: 'solid 10px #ab5c00',
+        borderRight: 'none'
+        
     },
     textBackground: {
         position: 'absolute',
@@ -40,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 
 const HomeBanner = (props) => {
     const {name,image} = props.props
-    console.log(props.props)
 
     const classes = useStyles()
     
@@ -60,10 +64,10 @@ const HomeBanner = (props) => {
                 alignItems="center"
                 spacing={1}
                 >
-                    <Grid item component='h2' xs={12} className = {classes.firstItem}>
+                    <Grid item component='h3' xs={12} className = {classes.firstItem}>
                             Welcome to 
                     </Grid>                
-                    <Grid item component='h3' xs={12}>
+                    <Grid item component='h2' xs={12} color = '#fff'>
                             {name}
                     </Grid>
                     <Grid item xs={12}>
