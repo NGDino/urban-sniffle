@@ -5,7 +5,6 @@ import imageUrlBuilder from '@sanity/image-url';
 import {Box, Grid, Typography, Button, Paper} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import client from '../../client';
-import winery from '../../../sanity/schemas/winery';
 
 function urlFor (source) {
     return imageUrlBuilder(client).image(source)
@@ -21,8 +20,7 @@ const useStyles = makeStyles((theme) => ({
         height: 300,
         // width: '100vw',
         position: 'fixed',
-        borderBottomRightRadius: '70%',
-        borderBottom: 'solid 10px #ab5c00',
+        borderBottom: 'double 15px #ab5c00',
         borderRight: 'none'
         
     },
@@ -50,7 +48,7 @@ const HomeBanner = (props) => {
     
     // console.log(name, image)
     return(
-        <Box component= 'div'>
+        <Box component= 'div' display = 'block'>
             <Box 
             className={classes.background}
             component='img'
@@ -74,6 +72,7 @@ const HomeBanner = (props) => {
                         <Button
                             variant="contained"
                             color="primary"
+                           
                         >
                             Start Flight
 
@@ -87,13 +86,6 @@ const HomeBanner = (props) => {
 
     )
 }
-
-// HomeBanner.getInitialProps = async () => ({
-//     winery: await client.fetch(groq`
-//     *[_type == "winery"]
-//     `)
-// })
-
 
 
 export default HomeBanner

@@ -42,6 +42,17 @@ export default {
                 }
             }],
         },
+        {
+            name: 'staff',
+            title: 'Staff',
+            type: 'array',
+            of: [{
+                type: 'reference',
+                to: {
+                    type: 'staff'
+                }
+            }],
+        },
         // production
     ],
     preview: {

@@ -17,6 +17,11 @@ export default {
             },
         },
         {
+            name: 'position',
+            title: 'Position',
+            type: 'string'
+        },
+        {
             name: 'favoriteWine',
             title: 'Favorite Wine',
             type: 'string'
