@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     background: {
         height: 300,
         // width: '100vw',
-        position: 'fixed',
+        position: 'relative',
         borderBottom: 'double 15px #ab5c00',
         borderRight: 'none'
         
@@ -43,12 +43,13 @@ const useStyles = makeStyles((theme) => ({
 
 const HomeBanner = (props) => {
     const {name,image} = props.props
+    console.log('homebanner', props)
 
     const classes = useStyles()
     
     // console.log(name, image)
     return(
-        <Box component= 'div' display = 'block'>
+        <Box component= 'div' display = 'block' >
             <Box 
             className={classes.background}
             component='img'

@@ -3,9 +3,6 @@ import {Box, Container, Typography} from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
-    topMargin: {
-        height: 303,
-    },
     about: {
         textAlign:'justify',
         margin: '7px'
@@ -19,7 +16,6 @@ const AboutSection = (props) => {
 
     return(
         <div >
-            <Box className={classes.topMargin}/>
             <Container>
                 <Typography variant = 'subtitle1' className = {classes.about}>
                     {about}

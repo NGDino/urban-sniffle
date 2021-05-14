@@ -44,13 +44,6 @@ export default {
             title: 'name',
             media: 'staffImage',
         },
-        prepare(selection) {
-            const {
-                name
-            } = selection
-            return Object.assign({}, selection, {
-                subtitle: name && `by ${name}`,
-            })
-        },
+
     },
 }
