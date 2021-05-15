@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import Nav from '../components/Nav'
 
+
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -26,7 +29,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Component {...pageProps}/>
         <Nav></Nav>
       </ThemeProvider>
     </React.Fragment>

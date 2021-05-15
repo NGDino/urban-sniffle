@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
     background: {
         height: 300,
-        // width: '100vw',
+        width: '100vw',
         position: 'relative',
         borderBottom: 'double 15px #ab5c00',
         borderRight: 'none'

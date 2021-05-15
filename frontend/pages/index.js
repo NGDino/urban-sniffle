@@ -7,6 +7,7 @@ import groq from 'groq';
 import client from '../client';
 
 
+
 const Index = (props) => {
   const {winery} = props
   const team = winery.team
