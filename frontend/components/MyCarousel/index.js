@@ -40,7 +40,6 @@ function MyCarousel(props){
 }
 
 function Item(member){
-    console.log('inside Item', member.item)
     const classes = useStyles()
     const  image = urlFor(member.item.staffImage)
 

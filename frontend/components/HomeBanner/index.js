@@ -1,10 +1,12 @@
 //for easy images
 import imageUrlBuilder from '@sanity/image-url';
+import Link from 'next/link';
 
 //materialUi components
-import {Box, Grid, Typography, Button, Paper} from '@material-ui/core';
+import {Box, Grid, Typography, Button, Menu, MenuItem} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import client from '../../client';
+import React from 'react';
 
 function urlFor (source) {
     return imageUrlBuilder(client).image(source)
@@ -42,12 +44,31 @@ const useStyles = makeStyles((theme) => ({
 
 
 const HomeBanner = (props) => {
-    const {name,image} = props.props
-    console.log('homebanner', props)
+    //state for menu
+
+    //destructure props
+    const {name,image, flights} = props.props
+    
+
+    console.log('homebanner flights', flights)
 
     const classes = useStyles()
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+    //event handlers to open menu for flights
+    const handleClick = (event) => {
+        event.preventDefault()
+        setAnchorEl(event.currentTarget);
+    };
     
-    // console.log(name, image)
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    
+    console.log('homebanner',props)
+
     return(
         <Box component= 'div' display = 'block' >
             <Box 
@@ -73,11 +94,26 @@ const HomeBanner = (props) => {
                         <Button
                             variant="contained"
                             color="primary"
-                           
+                            aria-controls="simple-menu" 
+                            aria-haspopup="true" 
+                            onClick={handleClick}
                         >
                             Start Flight
 
                         </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            {flights.map((flight)=>{
+                                <MenuItem onClick={handleClose}   primaryText={flight.name}/>
+                            })}
+                            
+                        
+                        </Menu>
                     </Grid>
                     
                 </Grid>
