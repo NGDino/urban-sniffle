@@ -50,7 +50,7 @@ const HomeBanner = (props) => {
     const {name,image, flights} = props.props
     
 
-    console.log('homebanner flights', flights)
+    console.log('homebanner flights', flights[0].slug)
 
     const classes = useStyles()
 
@@ -67,7 +67,6 @@ const HomeBanner = (props) => {
         setAnchorEl(null);
     };
     
-    console.log('homebanner',props)
 
     return(
         <Box component= 'div' display = 'block' >
@@ -97,9 +96,9 @@ const HomeBanner = (props) => {
                             aria-controls="simple-menu" 
                             aria-haspopup="true" 
                             onClick={handleClick}
+                            
                         >
                             Start Flight
-
                         </Button>
                         <Menu
                             id="simple-menu"
@@ -108,9 +107,18 @@ const HomeBanner = (props) => {
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            {flights.map((flight)=>{
-                                <MenuItem onClick={handleClose}   primaryText={flight.name}/>
-                            })}
+                            {/* {flights.map((flight)=>{ */}
+                                <MenuItem 
+                                onClick={handleClose}   
+                                >
+                                    <Link href="/flight/[slug]" as={`/flight/${flights[0].slug.current}`}>
+                                        {flights[0].name}
+                                    </Link>{' '}
+                                    
+                                </MenuItem>
+
+                                
+                            {/* })} */}
                             
                         
                         </Menu>

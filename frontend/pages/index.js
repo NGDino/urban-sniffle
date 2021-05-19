@@ -35,6 +35,7 @@ Index.getInitialProps = async () => ({
       description
     },
     "flights": flights[]->{
+      _id,
       name,
       slug
     }
