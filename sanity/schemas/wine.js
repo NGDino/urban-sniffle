@@ -43,10 +43,47 @@ export default {
             type: 'string',
         },
         {
+            name: 'specialAttribute',
+            title: 'Special Attribute',
+            type: 'string',
+        },
+        {
             name: 'videoUrl',
             title: 'Video Url',
             type: 'url',
         },
+        {
+            type: 'object',
+            name: 'wineMaking',
+            fieldsets: [
+              {name: 'keyStats', title: 'Key Stats'}
+            ],
+            fields: [
+              {
+                title: 'Name',
+                name: 'name',
+                type: 'string'
+              },
+              {
+                title: 'Twitter',
+                name: 'twitter',
+                type: 'string',
+                fieldset: 'keyStats'
+              },
+              {
+                title: 'Instagram',
+                name: 'instagram',
+                type: 'string',
+                fieldset: 'keyStats'
+              },
+              {
+                title: 'Facebook',
+                name: 'facebook',
+                type: 'string',
+                fieldset: 'keyStats'
+              }
+            ]
+          },
         {
             name: 'reviews',
             title: 'Reviews',

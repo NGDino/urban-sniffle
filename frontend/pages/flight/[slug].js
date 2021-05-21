@@ -123,6 +123,8 @@ const query = groq`
         _id,
         name,
         year,
+        description,
+        specialAttribute,
         slug,
         image,
         varietals,

@@ -1,121 +1,73 @@
 import {useState} from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import { Typography} from '@material-ui/core';
+
+import{Container, Typography, Box, Button, Hidden} from '@material-ui/core'
+import { makeStyles} from '@material-ui/core'
+
 
 const useStyles = makeStyles((theme) => ({
+    root:{
+        marginBottom:'70px'
+    },
     wineName: {
         display: 'block'
     }
 }))
 
-const Accordion = withStyles({
-    root: {
-        border: '1px solid rgba(0, 0, 0, .125)',
-        boxShadow: 'none',
-        '&:not(:last-child)': {
-        borderBottom: 0,
-        },
-        '&:before': {
-        display: 'none',
-        },
-        '&$expanded': {
-        margin: 'auto',
-        },
-    },
-    expanded: {},
-})(MuiAccordion);
 
-const AccordionSummary = withStyles({
-    root: {
-        backgroundColor: 'rgba(0, 0, 0, .03)',
-        borderBottom: '1px solid rgba(0, 0, 0, .125)',
-        marginBottom: -1,
-        minHeight: 56,
-        '&$expanded': {
-        minHeight: 56,
-        },
-    },
-    content: {
-        '&$expanded': {
-        margin: '12px 0',
-        
-        },
-    },
-    expanded: {},
-})(MuiAccordionSummary);
-
-const AccordionDetails = withStyles((theme) => ({
-    root: {
-        padding: theme.spacing(2),
-    },
-}))(MuiAccordionDetails);
 
 export default function FlightList(props) {
-    const [expanded, setExpanded] = useState('');
+    const [ moreInfo, setMoreInfo] = useState('');
 
     const classes = useStyles()
 
     const wines = props.props
     console.log('accordion props', wines)
 
-    const handleChange = (panel) => (event, newExpanded) => {
-        setExpanded(newExpanded ? panel : false);
-    };
 
     return (
     <div>
-        {
-            wines.map((wine, index )=> {
-                return(
-                    <Accordion square expanded={expanded === `panel1_${index}`} onChange={handleChange(`panel1_${index}`)}>
-                    <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography className={classes.wineName} variant='h5' component="h2" gutterBottom >
-                        {wine.year} {wine.name}
-                    </Typography>
-                    <Typography variant='p'>
-                        {wine.varietals} 
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                        sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                )
-                
-            })
-        }
         
-        {/* <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-            <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography>Collapsible Group Item #2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+        <Container className={classes.root}>
+            <Typography variant ='h4' align='center' gutterBottom>
+                Bordeaux Flight
             </Typography>
-            </AccordionDetails>
-        </Accordion>
-        <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-            <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography>Collapsible Group Item #3</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-            </AccordionDetails>
-        </Accordion> */}
+            {wines.map((wine,index) => {
+                return(
+                    <Box>
+                        <Typography variant='h5'>
+                            {wine.year} {wine.name}
+                        </Typography>
+                        <Typography variant='subtitle2'>
+                            {wine.specialAttribute} 
+                        </Typography>
+                        <Typography variant='subtitle1'>
+                            {wine.description} 
+                        </Typography>
+                        <Box component='div' >
+                        {moreInfo == wine._id ?
+                            <Button onClick= {() => setMoreInfo('') }>
+                                less Info
+                            </Button>
+                            :
+                            <Button onClick= {() => setMoreInfo(wine._id) }>
+                                More Info
+                            </Button>
+                        }
+                            {moreInfo == wine._id && 
+                            <Typography variant='body1' >
+                            Just when I thought I was out... they pull me back in. When they come... they come at what you love. Leave the gun. Take the cannoli. I have a sentimental weakness for my children and I spoil them, as you can see. They talk when they should listen. Very well. You want to do business with me. I will do business with you.
+
+                            Mr Corleone is Johnny Fontane's godfather. Now Italians regard that as a very close, a very sacred religious relationship. My father is no different than any powerful man, any man with power, like a president or senator. I don't feel I have to wipe everybody out, Tom. Just my enemies. I see you took the name of the town. What was your father's name? It's a Sicilian message. It means Luca Brasi sleeps with the fishes
+                        </Typography>
+                            }
+                        </Box>
+                    </Box>
+                )
+            
+        })}
+        
+
+        </Container>
     </div>
-);
+    );
 }
