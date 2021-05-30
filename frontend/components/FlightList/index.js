@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import{Container, Typography, Box, Button, Hidden} from '@material-ui/core'
+import{Container, Typography, Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Hidden} from '@material-ui/core'
 import { makeStyles} from '@material-ui/core'
 
 
@@ -10,9 +10,11 @@ const useStyles = makeStyles((theme) => ({
     },
     wineName: {
         display: 'block'
-    }
+    },
+    table: {
+        Width: '100%',
+    },
 }))
-
 
 
 export default function FlightList(props) {
@@ -20,10 +22,11 @@ export default function FlightList(props) {
 
     const classes = useStyles()
 
+
+
     const wines = props.props
     console.log('accordion props', wines)
-
-
+    
     return (
     <div>
         
@@ -54,15 +57,47 @@ export default function FlightList(props) {
                             </Button>
                         }
                             {moreInfo == wine._id && 
-                            <Typography variant='body1' >
-                            Just when I thought I was out... they pull me back in. When they come... they come at what you love. Leave the gun. Take the cannoli. I have a sentimental weakness for my children and I spoil them, as you can see. They talk when they should listen. Very well. You want to do business with me. I will do business with you.
-
-                            Mr Corleone is Johnny Fontane's godfather. Now Italians regard that as a very close, a very sacred religious relationship. My father is no different than any powerful man, any man with power, like a president or senator. I don't feel I have to wipe everybody out, Tom. Just my enemies. I see you took the name of the town. What was your father's name? It's a Sicilian message. It means Luca Brasi sleeps with the fishes
-                        </Typography>
+                            <div>
+                                <Typography variant='h6'>
+                                    Additional Information:
+                                </Typography>
+                                <Typography variant='body1'>
+                                    <strong>Barrel Program</strong>: {wine.wineMaking.barrelProgram}
+                                </Typography>
+                                <TableContainer component={Paper}>
+                                <Table className={classes.table} size="small" aria-label="a dense table">
+                                    <Hidden xsUp>
+                                    <TableHead>
+                                    <TableRow>
+                                        <TableCell>Stat</TableCell>
+                                        <TableCell align="left">Amount</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                    </Hidden>
+                                
+                                    <TableBody>
+                                        <TableRow key='ta'>
+                                            <TableCell align='right'> TA </TableCell>
+                                            <TableCell align='right'> {wine.wineMaking.ta} </TableCell>
+                                        </TableRow>
+                                        <TableRow key='alc'>
+                                            <TableCell align='right'> ALC </TableCell>
+                                            <TableCell align='right'> {wine.wineMaking.alc} </TableCell>
+                                        </TableRow>
+                                        <TableRow key='ph'>
+                                            <TableCell align='right'> ph </TableCell>
+                                            <TableCell align='right'> {wine.wineMaking.ph} </TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                               
+                                </TableContainer>
+                            </div>
+                            
                             }
                         </Box>
                     </Box>
-                )
+                ) 
             
         })}
         

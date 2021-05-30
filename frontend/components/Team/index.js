@@ -31,7 +31,7 @@ const Team = (props) => {
     return(
         <div className ={classes.root}>
           <Grid container className = {classes.staffContainer} justify='center' alignItems='center'>
-            <Grid item component= {Typography} variant = 'h4' className= {classes.heading}>
+            <Grid item xs = {12} component= {Typography} variant = 'h4' className= {classes.heading}>
               Meet our Team
             </Grid>
             {/* <Grid item component='div'> */}

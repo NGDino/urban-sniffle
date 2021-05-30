@@ -1,17 +1,21 @@
+//sanity
 import groq from 'groq'
 import client from '../../client';
 
+
+//react and material ui
 import {useState} from 'react'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
 import {AppBar, Tabs, Tab, Typography, Box} from '@material-ui/core';
 
-//for easy images
+//for easy images 
 import imageUrlBuilder from '@sanity/image-url';
 
+//components
 import FlightList from '../../components/FlightList';
+import TastingTools from '../../components/TastingTools';
 
 function urlFor (source) {
     return imageUrlBuilder(client).image(source)
@@ -106,7 +110,7 @@ console.log(props)
                     <FlightList props = {wines}/>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    Item Two
+                    <TastingTools/>
                 </TabPanel>
             </SwipeableViews>
         </div>
@@ -120,14 +124,7 @@ const query = groq`
         about,
         image,
         "wines":wine[]->{
-        _id,
-        name,
-        year,
-        description,
-        specialAttribute,
-        slug,
-        image,
-        varietals,
+        ...
         }
         
     

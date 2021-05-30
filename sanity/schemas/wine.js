@@ -59,31 +59,32 @@ export default {
               {name: 'keyStats', title: 'Key Stats'}
             ],
             fields: [
-              {
-                title: 'Name',
-                name: 'name',
-                type: 'string'
-              },
-              {
-                title: 'Twitter',
-                name: 'twitter',
-                type: 'string',
-                fieldset: 'keyStats'
-              },
-              {
-                title: 'Instagram',
-                name: 'instagram',
-                type: 'string',
-                fieldset: 'keyStats'
-              },
-              {
-                title: 'Facebook',
-                name: 'facebook',
-                type: 'string',
-                fieldset: 'keyStats'
-              }
+                {
+                    title: 'Barrel Program',
+                    name: 'barrelProgram',
+                    type: 'text'
+                },
+                
+                {
+                    title: 'ALC percent',
+                    name: 'alc',
+                    type: 'string',
+                    fieldset: 'keyStats'
+                },
+                {
+                    title: 'TA',
+                    name: 'ta',
+                    type: 'string',
+                    fieldset: 'keyStats'
+                },
+                {
+                    title: 'PH',
+                    name: 'ph',
+                    type: 'string',
+                    fieldset: 'keyStats'
+                },
             ]
-          },
+        },
         {
             name: 'reviews',
             title: 'Reviews',
