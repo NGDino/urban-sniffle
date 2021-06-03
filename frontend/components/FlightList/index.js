@@ -1,12 +1,13 @@
 import {useState} from 'react';
 
-import{Container, Typography, Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Hidden} from '@material-ui/core'
+import{Container, Typography, Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Hidden, Fab} from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 import { makeStyles} from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        marginBottom:'70px'
+        paddingBottom:'70px'
     },
     wineName: {
         display: 'block'
@@ -14,6 +15,15 @@ const useStyles = makeStyles((theme) => ({
     table: {
         Width: '100%',
     },
+    moreInfo: {
+        paddingBottom:'3.2em'
+    },
+    fab: {
+        position: 'fixed',
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+        marginBottom:'70px',
+    }
 }))
 
 
@@ -26,6 +36,10 @@ export default function FlightList(props) {
 
     const wines = props.props
     console.log('accordion props', wines)
+
+    const openModel= () => {
+        console.log('working yee')
+    }
     
     return (
     <div>
@@ -47,17 +61,17 @@ export default function FlightList(props) {
                             {wine.description} 
                         </Typography>
                         <Box component='div' >
-                        {moreInfo == wine._id ?
-                            <Button onClick= {() => setMoreInfo('') }>
-                                less Info
-                            </Button>
-                            :
-                            <Button onClick= {() => setMoreInfo(wine._id) }>
-                                More Info
-                            </Button>
-                        }
+                            {moreInfo == wine._id ?
+                                <Button onClick= {() => setMoreInfo('') }>
+                                    less Info
+                                </Button>
+                                :
+                                <Button onClick= {() => setMoreInfo(wine._id) }>
+                                    More Info
+                                </Button>
+                            }
                             {moreInfo == wine._id && 
-                            <div>
+                            <div className={classes.moreInfo}>
                                 <Typography variant='h6'>
                                     Additional Information:
                                 </Typography>
@@ -90,7 +104,6 @@ export default function FlightList(props) {
                                         </TableRow>
                                     </TableBody>
                                 </Table>
-                               
                                 </TableContainer>
                             </div>
                             
@@ -100,7 +113,9 @@ export default function FlightList(props) {
                 ) 
             
         })}
-        
+        <Fab color="secondary" aria-label="edit" className={classes.fab} onClick={openModel}>
+            <EditIcon />
+        </Fab>
 
         </Container>
     </div>

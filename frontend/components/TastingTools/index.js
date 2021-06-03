@@ -9,12 +9,12 @@ const TastingTools= () => {
                 Aroma Wheel
             </Typography>
             <Image 
-            src = '/aroma-wheel.jpg' alt="me" width="500px" height='500px'
+            src = '/aroma-wheel.jpg' alt="aroma wheel" width="500px" height='500px'
             />
             <Typography variant ='h6'>
                 Color Chart
             </Typography>
-            
+
         </div>
     )
 }
